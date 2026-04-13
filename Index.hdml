@@ -1,23 +1,44 @@
-html>
-<body style="margin:0;background:black;color:white;font-family:sans-serif;text-align:center">
-<div id="app" style="padding-top:40px"></div>
+HTML
+<!DOCTYPE html>
+<html>
+<body style="margin:0;background:black;color:white;text-align:center">
+
+<h1>🚀 Space Lab Escape</h1>
+<canvas id="game" width="400" height="400" style="background:#111"></canvas>
+<br>
+
+<button onclick="move(0,-1)">⬆️</button><br>
+<button onclick="move(-1,0)">⬅️</button>
+<button onclick="move(1,0)">➡️</button><br>
+<button onclick="move(0,1)">⬇️</button>
 
 <script>
-let s=0,a=document.getElementById("app");
+const c=document.getElementById("game");
+const x=c.getContext("2d");
 
-function r(){
-if(s==0)a.innerHTML='<h1>🚀 Space Lab</h1><p>You wake up next to a desk. A ripped book lies open...</p><button onclick="n()">Enter</button>';
-else if(s==1)a.innerHTML='<h2>MR ABYSS</h2><p>⚪ A white creature attacks you...</p><button onclick="n()">...</button>';
-else if(s==2)a.innerHTML='<h2>Closet</h2><p>"He knocked you out for your own good"</p><button onclick="n()">Wait</button><button onclick="s=3;r()">Explore</button>';
-else if(s==3)a.innerHTML='<h2>Science Room</h2><p>🦇 Bat monster!</p><button onclick="n()">RUN</button>';
-else if(s==4)a.innerHTML='<h2>CHASE!</h2><p>💥 Door crushes it!</p><button onclick="n()">Go</button>';
-else if(s==5)a.innerHTML='<h2>Portal Room</h2><button onclick="n()">Enter</button>';
-else if(s==6)a.innerHTML='<p>🖐️ A giant hand breaks the portal and drags Mr Abyss away!</p><button onclick="n()">...</button>';
-else a.innerHTML='<h1>🌌 ABYSS LAB</h1><button onclick="s=0;r()">Play Again</button>';
+let p={x:1,y:1};
+let m={x:10,y:10};
+let g={x:18,y:18};
+
+function draw(){
+x.clearRect(0,0,400,400);
+x.fillStyle="blue";x.fillRect(p.x*20,p.y*20,20,20);
+x.fillStyle="red";x.fillRect(m.x*20,m.y*20,20,20);
+x.fillStyle="green";x.fillRect(g.x*20,g.y*20,20,20);
 }
 
-function n(){s++;r()}
-r();
+function move(dx,dy){
+p.x+=dx;p.y+=dy;
+m.x+=Math.sign(p.x-m.x);
+m.y+=Math.sign(p.y-m.y);
+
+if(p.x==m.x&&p.y==m.y)alert("💀 Caught!");
+if(p.x==g.x&&p.y==g.y)alert("🎉 Escape!");
+
+draw();
+}
+
+draw();
 </script>
 
 </body>
