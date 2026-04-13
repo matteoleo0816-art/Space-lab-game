@@ -1,0 +1,24 @@
+html>
+<body style="margin:0;background:black;color:white;font-family:sans-serif;text-align:center">
+<div id="app" style="padding-top:40px"></div>
+
+<script>
+let s=0,a=document.getElementById("app");
+
+function r(){
+if(s==0)a.innerHTML='<h1>🚀 Space Lab</h1><p>You wake up next to a desk. A ripped book lies open...</p><button onclick="n()">Enter</button>';
+else if(s==1)a.innerHTML='<h2>MR ABYSS</h2><p>⚪ A white creature attacks you...</p><button onclick="n()">...</button>';
+else if(s==2)a.innerHTML='<h2>Closet</h2><p>"He knocked you out for your own good"</p><button onclick="n()">Wait</button><button onclick="s=3;r()">Explore</button>';
+else if(s==3)a.innerHTML='<h2>Science Room</h2><p>🦇 Bat monster!</p><button onclick="n()">RUN</button>';
+else if(s==4)a.innerHTML='<h2>CHASE!</h2><p>💥 Door crushes it!</p><button onclick="n()">Go</button>';
+else if(s==5)a.innerHTML='<h2>Portal Room</h2><button onclick="n()">Enter</button>';
+else if(s==6)a.innerHTML='<p>🖐️ A giant hand breaks the portal and drags Mr Abyss away!</p><button onclick="n()">...</button>';
+else a.innerHTML='<h1>🌌 ABYSS LAB</h1><button onclick="s=0;r()">Play Again</button>';
+}
+
+function n(){s++;r()}
+r();
+</script>
+
+</body>
+</html>
