@@ -1,1 +1,1 @@
-# Space-lab-game
+# space-lab-game
